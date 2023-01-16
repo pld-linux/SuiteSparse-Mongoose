@@ -1,0 +1,18 @@
+--- Mongoose-2.0.4/CMakeLists.txt.orig	2019-05-25 19:44:47.000000000 +0200
++++ Mongoose-2.0.4/CMakeLists.txt	2023-01-16 19:57:09.106877953 +0100
+@@ -148,11 +148,10 @@ set(CMAKE_CXX_STANDARD 11)
+ #set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ 
+ # determine which SuiteSparse_config to use
+-if (EXISTS ${PROJECT_SOURCE_DIR}/../SuiteSparse_config)
+-    message(STATUS "External ../SuiteSparse_config" ${BoldBlue} " found" ${ColourReset} ".")
+-    set ( SUITESPARSE_CONFIG_DIR ${PROJECT_SOURCE_DIR}/../SuiteSparse_config )
+-    link_directories ( ${PROJECT_SOURCE_DIR}/../lib )
+-    message ( STATUS "Note: ../SuiteSparse_config must be compiled before compiling Mongoose" )
++if (EXISTS /usr/share/misc/SuiteSparse_config.mk)
++    message(STATUS "External SuiteSparse_config" ${BoldBlue} " found" ${ColourReset} ".")
++    set ( SUITESPARSE_CONFIG_DIR /usr/include/suitesparse )
++    link_directories ( /usr/lib${LIB_SUFFIX} )
+     set ( SUITESPARSE_CONFIG_LIBRARY suitesparseconfig )
+ else ()
+     message(STATUS "External ../SuiteSparse_config" ${BoldRed} " not found" ${ColourReset} ", compiling stand-alone Mongoose.")
